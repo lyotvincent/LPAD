@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from colormap import Color, Colormap
+import argparse
 
 
 def rwr_graph(input_graph,
@@ -195,7 +196,7 @@ def _plot_HiC(matrix_data, vmax, colors=None):
         cbar=False)
 
 
-def com_local_density(matrix, w=5):
+def com_local_density(matrix, w=5, topk = 60):
     shape = matrix.shape[0]
     local_density = np.zeros((shape,))
     mean_Val = np.mean(matrix)
@@ -228,7 +229,7 @@ def com_local_density(matrix, w=5):
     lg = np.asarray(lg)
     rg = np.asarray(rg)
     gr = lg + rg
-    thr = np.percentile(gr, 60)
+    thr = np.percentile(gr, topk)
     res = [0]
     for i in range(len(gr)):
         if gr[i] >= thr:
@@ -237,30 +238,47 @@ def com_local_density(matrix, w=5):
     return res
 
 if __name__ == '__main__':
-    for i in range(1, 21):
-        f = open('out' + str(i), 'w')
-        p = 1.5
-        bak_matrix = np.loadtxt('./data/cortex/nij/nij.chr' + str(i))
-        local_density = com_local_density(bak_matrix, w=5)
-        local_density.insert(0, 0)
-        local_density.append(bak_matrix.shape[0])
-        for bins in range(0, len(local_density) - 1):
-            s = local_density[bins]
-            e = local_density[bins + 1]
-            matrix = bak_matrix[s:e, s:e]
-            matrix = rwr_graph(matrix, c=0.9, shape=matrix.shape[0])
-            lpa_file = './matrix_for_lpa'
-            matrix_to_graph(matrix, file=lpa_file, p=(p))
-            cluster_g = LPA(lpa_file)
-            os.remove(lpa_file)
-            for g in cluster_g:
-                t = cluster_g[g]
-                up = int(t[0])
-                down = int(t[-1])
-                if down - up < 4:
-                    continue
-                else:
-                    x = up + s
-                    y = down + s
-                    f.write(str(x) + '\t' + str(y) + '\n')
-        f.close()
+    parser = argparse.ArgumentParser(description='Detection of Topological Associated Domains from Hi-C Data using Network Construction and Label propagation')
+    parser.add_argument('-f', type=str, help="the path of a intra-chromosomal Hi-C matrix seperated by Tab with N by N shaped")
+    parser.add_argument('-w', type=int, default=5, help="window size,the default is 5.")
+    parser.add_argument('-c', type=float, default=0.9, help="the restart probability, the default is 0.9")
+    parser.add_argument('-o', type=str, default='./out', help="the storage path and filename of result, the default is ./out")
+    parser.add_argument('-p', type=float, default=1.0, help="optional, the Penalty coefficient, the default is 1")
+    parser.add_argument('-k', type=float, default=0.6, help="optional, the top k, 0 ~ 1， the default is 0.6")
+    args = parser.parse_args()
+    filepath, w, c, out, p, topk = args.f, args.w, args.c, args.o, args.p, args.k
+
+    if filepath is None:
+        print("no file input")
+        sys.exit()
+    
+    if topk <= 0 or topk >= 1:
+        topk=60
+    else:
+        topk = topk * 100
+
+    f = open(out, 'w')
+    bak_matrix = np.loadtxt(filepath)
+    local_density = com_local_density(bak_matrix, w=w, topk=topk)
+    local_density.insert(0, 0)
+    local_density.append(bak_matrix.shape[0])
+    for bins in range(0, len(local_density) - 1):
+        s = local_density[bins]
+        e = local_density[bins + 1]
+        matrix = bak_matrix[s:e, s:e]
+        matrix = rwr_graph(matrix, c = c, shape=matrix.shape[0])
+        lpa_file = './matrix_for_lpa'
+        matrix_to_graph(matrix, file=lpa_file, p=(p))
+        cluster_g = LPA(lpa_file)
+        os.remove(lpa_file)
+        for g in cluster_g:
+            t = cluster_g[g]
+            up = int(t[0])
+            down = int(t[-1])
+            if down - up < 4:
+                continue
+            else:
+                x = up + s
+                y = down + s
+                f.write(str(x) + '\t' + str(y) + '\n')
+    f.close()
