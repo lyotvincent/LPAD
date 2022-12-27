@@ -3,27 +3,32 @@ Detection of Topological Associated Domains from Hi-C Data using Network Constru
 
 ## 1. Hi-C Data 
 
-In our experiment, we used three normalized Hi-C matrix processed by Bing Ren's Lab. Data is available at : http://chromosome.sdsc.edu/mouse/hi-c/download.html.
+In our experiment, we used 3 three normalized Hi-C matrix pre-processed by Bing Ren's Lab. Data is available at : http://chromosome.sdsc.edu/mouse/hi-c/download.html.
 Besides,we also used a simulated data extract from chr6 on mouse cortex cell line, normalized Matrix is in the folder  `data`.
 
 ## 2.Usage:
 
 run the PLA_2.py
 
+```sh
+python PLA_2.py -h
+```
+
 Parameters are as follows:
 
- * filepath: the path of a `intra-chromosomal` Hi-C matrix seperated by Tab with N by N shaped
+ * f: the path of a `intra-chromosomal` Hi-C matrix seperated by Tab with N by N shaped
  * w: window-size,the default is 5.
  * c: the restart probability, the default is 0.9
- * outpath: the storage path and filename of result, the default is ./out
+ * o: the storage path and filename of result, the default is ./out
  * p (<b>optional</b>): the Penalty coefficient, the default is 1.
+ * k (<b>optional</b>): the top k, the default is 0.6.
 
 ### Requirements
  * numpy
  * matplotlib
  * seaborn
  * colormap
- * pyrwr: we use this package download from https://github.com/jinhongjung/pyrwr and modify the source code. Therefore, we uploaded the code in this repository.
+ * pyrwr: we use this package download from https://github.com/jinhongjung/pyrwr and modify the source code. <b>you do not need to install it.</b>
  * scipy
  * tdqm
  * pandas
