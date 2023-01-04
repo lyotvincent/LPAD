@@ -4,6 +4,8 @@ Detection of Topological Associated Domains from Hi-C Data using Network Constru
 ## 1. Hi-C Data 
 
 In our experiment, we used 3 three normalized Hi-C matrix pre-processed by Bing Ren's Lab. Data is available at : http://chromosome.sdsc.edu/mouse/hi-c/download.html.
+> As of January 1, 2023, this website is temporarily unavailable,You can use our backup at:
+https://pan.baidu.com/s/1f-_GLxrt7jxrd3Y1CqQimw password: tm20 
 Besides,we also used a simulated data extract from chr6 on mouse cortex cell line, normalized Matrix is in the folder  `data`.
 
 ## 2.Usage:
