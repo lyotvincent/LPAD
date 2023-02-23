@@ -49,7 +49,7 @@ LPAD produces a files. Note that,The output file will be named by the user in wh
 # Annotation TAD
 ```
 cd ./annotation
-python annotation -h
+python annotate.py -h
 ```
 ```text
 A simple tools to annotate Human TAD!
