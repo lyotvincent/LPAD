@@ -70,45 +70,10 @@ optional arguments:
 ```
 
 an example of OUTPUT:
-```json
+```text
 # Annotation the TAD of 16:1170-1181, resolution:40000 
 [
-    {
-        "id": "NM_001370497",
-        "locus": "chr16:46,757,184-46,838,951",
-        "strand": "-",
-        "name": "ABCC11",
-        "enhancer": "",
-        "promoter": "chr16:48244661-48244662",
-        "super_enhancer": "",
-        "diseases": "Disease Exacerbation,Malignant neoplasm of breast,Breast Carcinoma,EAR WAX, WET/DRY,Bromhidrosis,Neoplasms",
-        "TF": "",
-        "target": ""
-    },
-    {
-        "id": "NM_031490",
-        "locus": "chr16:46,835,711-46,948,761",
-        "strand": "+",
-        "name": "LONP2",
-        "enhancer": "",
-        "promoter": "chr16:48244299-48244300",
-        "super_enhancer": "",
-        "diseases": "Hyperhidrosis disorder",
-        "TF": "",
-        "target": ""
-    },
-    {
-        "id": "NR_039639",
-        "locus": "chr16:46,832,103-46,978,060",
-        "strand": "+",
-        "name": "MIR548AE2",
-        "enhancer": "",
-        "promoter": "",
-        "super_enhancer": "",
-        "diseases": "",
-        "TF": "",
-        "target": ""
-    },
+    ...
     {
         "id": "NM_153029",
         "locus": "chr16:47,130,137-47,201,592",
@@ -133,5 +98,6 @@ an example of OUTPUT:
         "TF": "EHMT2(-),TP53(?)",
         "target": ""
     }
+    ...
 ]
 ```
