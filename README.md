@@ -38,3 +38,25 @@ Parameters are as follows:
  ## 3.Output
 
 LPAD produces a files. Note that,The output file will be named by the user in which list the TADs extracted from the input data. The first column is the start bin, and the second column is the stop bin.
+
+# Annotation TAD
+```
+cd ./annotation
+python annotation -h
+```
+
+A simple tools to annotate Human TAD!
+-------------------------------------
+    Use example: python annotate.py -c 16 -r 40000 -b 1170,1181,677,684
+    Use example: python annotate.py -c 16 -r 40000 -s 1170 -e 181
+    Use example: python annotate.py -c 16 -r 40000 -f './test_TAD'
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -c C        index of Chromosome
+  -s S        index of starting bin of TAD
+  -e E        index of ending bin of TAD
+  -r R        resolution(unit b) of Hi-C contact matrix
+  -o O        output file to store result,the default is ./annotation.out
+  -b B        a list of TAD. For example, 1,5,9,13 contains TAD (1,5) and TAD (9, 13)
+  -f F        a file record TAD. One TAD per line tab separation
