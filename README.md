@@ -45,8 +45,6 @@ cd ./annotation
 python annotation -h
 ```
 
-A simple tools to annotate Human TAD!
--------------------------------------
     Use example: python annotate.py -c 16 -r 40000 -b 1170,1181,677,684
     Use example: python annotate.py -c 16 -r 40000 -s 1170 -e 181
     Use example: python annotate.py -c 16 -r 40000 -f './test_TAD'
