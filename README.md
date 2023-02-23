@@ -44,13 +44,12 @@ LPAD produces a files. Note that,The output file will be named by the user in wh
 cd ./annotation
 python annotation -h
 ```
-
-Use example: python annotate.py -c 16 -r 40000 -b 1170,1181,677,684
-
-Use example: python annotate.py -c 16 -r 40000 -s 1170 -e 181
-
-Use example: python annotate.py -c 16 -r 40000 -f './test_TAD'
-
+```text
+A simple tools to annotate Human TAD!
+-------------------------------------
+    Use example: python annotate.py -c 16 -r 40000 -b 1170,1181,677,684
+    Use example: python annotate.py -c 16 -r 40000 -s 1170 -e 181
+    Use example: python annotate.py -c 16 -r 40000 -f './test_TAD'
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -61,3 +60,71 @@ optional arguments:
   -o O        output file to store result,the default is ./annotation.out
   -b B        a list of TAD. For example, 1,5,9,13 contains TAD (1,5) and TAD (9, 13)
   -f F        a file record TAD. One TAD per line tab separation
+```
+
+an example of OUTPUT:
+```json
+# Annotation the TAD of 16:1170-1181, resolution:40000 
+[
+    {
+        "id": "NM_001370497",
+        "locus": "chr16:46,757,184-46,838,951",
+        "strand": "-",
+        "name": "ABCC11",
+        "enhancer": "",
+        "promoter": "chr16:48244661-48244662",
+        "super_enhancer": "",
+        "diseases": "Disease Exacerbation,Malignant neoplasm of breast,Breast Carcinoma,EAR WAX, WET/DRY,Bromhidrosis,Neoplasms",
+        "TF": "",
+        "target": ""
+    },
+    {
+        "id": "NM_031490",
+        "locus": "chr16:46,835,711-46,948,761",
+        "strand": "+",
+        "name": "LONP2",
+        "enhancer": "",
+        "promoter": "chr16:48244299-48244300",
+        "super_enhancer": "",
+        "diseases": "Hyperhidrosis disorder",
+        "TF": "",
+        "target": ""
+    },
+    {
+        "id": "NR_039639",
+        "locus": "chr16:46,832,103-46,978,060",
+        "strand": "+",
+        "name": "MIR548AE2",
+        "enhancer": "",
+        "promoter": "",
+        "super_enhancer": "",
+        "diseases": "",
+        "TF": "",
+        "target": ""
+    },
+    {
+        "id": "NM_153029",
+        "locus": "chr16:47,130,137-47,201,592",
+        "strand": "-",
+        "name": "N4BP1",
+        "enhancer": "chr16:48912816-48914144,chr16:49094466-49095242,chr16:48753822-48755022,chr16:48939235-48941566",
+        "promoter": "chr16:48610160-48610161",
+        "super_enhancer": "",
+        "diseases": "Rheumatoid Arthritis,Glycosuria,Eosinophil count procedure,Blood basophil count (lab test)",
+        "TF": "",
+        "target": ""
+    },
+    {
+        "id": "NM_001006610",
+        "locus": "chr16:46,951,947-46,957,299",
+        "strand": "-",
+        "name": "SIAH1",
+        "enhancer": "",
+        "promoter": "chr16:48365886-48365887,chr16:48385409-48385410,chr16:48448397-48448398",
+        "super_enhancer": "",
+        "diseases": "Body Height,Neoplasms,Finding of Mean Corpuscular Hemoglobin,Carcinogenesis,Liver carcinoma,Tumor Cell Invasion,Malignant neoplasm of breast,Parkinson Disease,Breast Carcinoma",
+        "TF": "EHMT2(-),TP53(?)",
+        "target": ""
+    }
+]
+```
