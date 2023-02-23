@@ -16,14 +16,21 @@ run the PLA_2.py
 python PLA_2.py -h
 ```
 
-Parameters are as follows:
+```text
+usage: PLA_2.py [-h] [-f F] [-w W] [-c C] [-o O] [-p P] [-k K]
 
- * f: the path of a `intra-chromosomal` Hi-C matrix seperated by Tab with N by N shaped
- * w: window-size,the default is 5.
- * c: the restart probability, the default is 0.9
- * o: the storage path and filename of result, the default is ./out
- * p (<b>optional</b>): the Penalty coefficient, the default is 1.
- * k (<b>optional</b>): the top k, the default is 0.6.
+Detection of Topological Associated Domains from Hi-C Data using Network Construction and Label propagation
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -f F        the path of a intra-chromosomal Hi-C matrix seperated by Tab with N by N shaped
+  -w W        window size,the default is 5.
+  -c C        the restart probability, the default is 0.9
+  -o O        the storage path and filename of result, the default is ./out
+  -p P        optional, the Penalty coefficient, the default is 1
+  -k K        optional, the top k, 0 ~ 1， the default is 0.6
+
+```
 
 ### Requirements
  * numpy
