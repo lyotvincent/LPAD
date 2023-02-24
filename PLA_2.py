@@ -342,7 +342,7 @@ def com_local_density(matrix, w=5, topk=60):
     res = [0]
     if topk == 0:
         for i in range(len(gr)):
-            if gr[i] >= 2*w:
+            if gr[i] > 2*w:
                 res.append(minimize[i])
     else:
         thr = np.percentile(gr, topk)
@@ -384,7 +384,7 @@ if __name__ == '__main__':
         '-k',
         type=float,
         default=0.6,
-        help="optional, the top k, 0.1 ~ 0.9， the default value is inferred based on w automatically.")
+        help="optional, the top k, 0.1 ~ 0.9， the default value is inferred based on w automatically. Not recommended to use")
     args = parser.parse_args()
     filepath, w, c, out, p, topk = args.f, args.w, args.c, args.o, args.p, args.k
 
