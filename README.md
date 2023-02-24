@@ -28,8 +28,7 @@ optional arguments:
   -c C        the restart probability, the default is 0.9
   -o O        the storage path and filename of result, the default is ./out
   -p P        optional, the Penalty coefficient, the default is 1
-  -k K        optional, the top k, 0 ~ 1， the default value is inferred based on w automatically.
-
+  -k K        optional, the top k, 0.1 ~ 0.9， the default value is inferred based on w automatically. Not recommended to use
 ```
 
 ### Requirements
