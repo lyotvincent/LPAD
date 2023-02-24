@@ -339,11 +339,16 @@ def com_local_density(matrix, w=5, topk=60):
     lg = np.asarray(lg)
     rg = np.asarray(rg)
     gr = lg + rg
-    thr = np.percentile(gr, topk)
     res = [0]
-    for i in range(len(gr)):
-        if gr[i] >= thr:
-            res.append(minimize[i])
+    if topk == 0:
+        for i in range(len(gr)):
+            if gr[i] >= 2*w:
+                res.append(minimize[i])
+    else:
+        thr = np.percentile(gr, topk)
+        for i in range(len(gr)):
+            if gr[i] >= thr:
+                res.append(minimize[i])
     res.append(shape)
     return res
 
@@ -379,7 +384,7 @@ if __name__ == '__main__':
         '-k',
         type=float,
         default=0.6,
-        help="optional, the top k, 0 ~ 1， the default value is inferred based on w automatically.")
+        help="optional, the top k, 0.1 ~ 0.9， the default value is inferred based on w automatically.")
     args = parser.parse_args()
     filepath, w, c, out, p, topk = args.f, args.w, args.c, args.o, args.p, args.k
 
@@ -387,10 +392,10 @@ if __name__ == '__main__':
         print("no file input")
         sys.exit()
 
-    if topk <= 0 or topk >= 1:
-        topk = 60
+    if topk:
+      topk = (1 - topk) * 100
     else:
-        topk = topk * 100
+      topk = 0
 
     ###########################################################################
     # Step 1: Read contact matrix from input file
