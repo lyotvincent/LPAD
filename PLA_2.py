@@ -379,7 +379,7 @@ if __name__ == '__main__':
         '-k',
         type=float,
         default=0.6,
-        help="optional, the top k, 0 ~ 1， the default is 0.6")
+        help="optional, the top k, 0 ~ 1， the default value is inferred based on w automatically.")
     args = parser.parse_args()
     filepath, w, c, out, p, topk = args.f, args.w, args.c, args.o, args.p, args.k
 
@@ -430,7 +430,7 @@ if __name__ == '__main__':
             t = cluster_g[g]
             up = int(t[0])
             down = int(t[-1])
-            if down - up < 4:
+            if down - up < w:
                 continue
             else:
                 x = up + s
