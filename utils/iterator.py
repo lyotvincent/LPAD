@@ -36,7 +36,7 @@ def iterate(A, q, c=0.15, epsilon=1e-9,
     old_x = q
     residuals = np.zeros(max_iters)
 
-    pbar = tqdm(total=max_iters)
+    # pbar = tqdm(total=max_iters)
     for i in range(max_iters):
         if handles_deadend:
             x = (1 - c) * (A.dot(old_x))
@@ -54,8 +54,8 @@ def iterate(A, q, c=0.15, epsilon=1e-9,
             break
 
         old_x = x
-        pbar.update(1)
+        # pbar.update(1)
 
-    pbar.close()
+    # pbar.close()
 
     return x, residuals[0:i + 1]
