@@ -435,7 +435,7 @@ if __name__ == '__main__':
             t = cluster_g[g]
             up = int(t[0])
             down = int(t[-1])
-            if down - up < w:
+            if down - up < 4:
                 continue
             else:
                 x = up + s
