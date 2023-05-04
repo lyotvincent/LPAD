@@ -1,6 +1,11 @@
 # LPAD
 Detection of Topological Associated Domains from Hi-C Data using Network Construction and Label propagation
 
+<div align=center>
+  <img src="./FIgure1.png" width="60%" height="60%" />
+  </br>Figure 1. framework of LPAD
+</div>
+
 ## 1. Hi-C Data 
 
 In our experiment, we used 3 three normalized Hi-C matrix pre-processed by Bing Ren's Lab. Data is available at : http://chromosome.sdsc.edu/mouse/hi-c/download.html.
