@@ -60,7 +60,7 @@ def matrix_to_graph(matrix, file, p):
             if matrix[i][j] == 0:
                 continue
             w = float(matrix[i][j]) / abs(i - j) ** p
-            line = str(i) + ' ' + str(j) + ' ' + str(w) + '\r\n'
+            line = str(i) + ' ' + str(j) + ' ' + str(w) + '\n'
             f.write(line)
 
 
